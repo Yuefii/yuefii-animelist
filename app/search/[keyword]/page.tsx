@@ -18,17 +18,17 @@ interface Params {
   keyword: string;
 }
 
-
 const Page = async ({ params }: { params: Params }) => {
   const { keyword } = params;
+  const decodeKeyword = decodeURI(keyword);
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const result = await fetch(apiUrl + `/anime?q=${keyword}`);
+  const result = await fetch(apiUrl + `/anime?q=${decodeKeyword}`);
   const searchAnime: AnimeResponse = await result.json();
   return (
     <>
       <div className="container mx-auto">
         <section>
-          <Header title={`Result for ${keyword}...`} />
+          <Header title={`Result for ${decodeKeyword}...`} />
           <TopAnime topAnime={searchAnime} />
         </section>
       </div>

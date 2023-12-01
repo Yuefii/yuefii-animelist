@@ -13,9 +13,6 @@ interface AnimeData {
 interface AnimeResponse {
   data: AnimeData[];
 }
-interface TopAnimeProps {
-  topAnime: AnimeResponse;
-}
 
 const Page = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -25,7 +22,7 @@ const Page = async () => {
     <>
       <div className="container mx-auto">
         <section>
-          <Header title="Top Anime" linkTitle="See All" linkHref="/TopAnime" />
+          <Header title="Top Anime" linkTitle="See All" linkHref="/top-anime" />
           <TopAnime topAnime={topAnime} />
         </section>
       </div>
