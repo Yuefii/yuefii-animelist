@@ -1,8 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import TopAnime from "../components/TopAnime";
-import HeaderMenu from "../utils/HeaderMenu";
-import Pagination from "../utils/Pagination";
+import TopAnime from "@/app/components/TopAnime";
+import HeaderMenu from "@/app/utils/HeaderMenu";
+import Pagination from "@/app/utils/Pagination";
+import { getAnimeResponse } from "@/app/libs/api";
 
 interface PaginationType {
   last_visible_page: number;
@@ -20,10 +21,8 @@ const Page = () => {
   });
 
   const fetchData = useCallback(async () => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const result = await fetch(`${apiUrl}/top/anime?page=${page}`);
-    const data = await result.json();
-    setTopAnime(data);
+    const topAnime = await getAnimeResponse("top/anime", `page=${page}`);
+    setTopAnime(topAnime);
   }, [page]);
 
   useEffect(() => {
