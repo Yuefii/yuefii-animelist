@@ -8,10 +8,14 @@ const InputSearch = () => {
   const searchRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const handleButtonSearch = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleButtonSearch = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
     const keyword = searchRef.current?.value;
-    router.push(`/search/${keyword}`);
+    if (keyword && keyword.trim() !== "") {
+      router.push(`/search/${keyword}`);
+    }
   };
 
   const handleInputSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
