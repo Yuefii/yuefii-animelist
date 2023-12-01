@@ -13,20 +13,23 @@ interface AnimeData {
 interface AnimeResponse {
   data: AnimeData[];
 }
-interface TopAnimeProps {
-  topAnime: AnimeResponse;
+
+interface Params {
+  keyword: string;
 }
 
-const Page = async () => {
+
+const Page = async ({ params }: { params: Params }) => {
+  const { keyword } = params;
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const result = await fetch(apiUrl + "/top/anime?limit=10");
-  const topAnime: AnimeResponse = await result.json();
+  const result = await fetch(apiUrl + `/anime?q=${keyword}`);
+  const searchAnime: AnimeResponse = await result.json();
   return (
     <>
       <div className="container mx-auto">
         <section>
-          <Header title="Top Anime" linkTitle="See All" linkHref="/TopAnime" />
-          <TopAnime topAnime={topAnime} />
+          <Header title={`Result for ${keyword}...`} />
+          <TopAnime topAnime={searchAnime} />
         </section>
       </div>
     </>
