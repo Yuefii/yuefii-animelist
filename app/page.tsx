@@ -5,6 +5,7 @@ import {
   getNestedAnimeResponse,
   reproduce,
 } from "@/app/libs/api";
+import ButtonUser from "./utils/ButtonUser";
 
 const Page = async () => {
   const topAnime = await getAnimeResponse("top/anime", "limit=10");
@@ -13,9 +14,11 @@ const Page = async () => {
     "entry"
   );
   recomendations = reproduce(recomendations, 5);
+
   return (
     <>
       <div className="container mx-auto">
+        <ButtonUser />
         <section>
           <Header title="Recomendations" />
           <TopAnime topAnime={recomendations} />
