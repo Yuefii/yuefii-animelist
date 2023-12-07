@@ -21,10 +21,16 @@ const Page = async () => {
           <h1 className="text-2xl">{user?.name}</h1>
         </div>
         <div className="my-5 gap-2 flex justify-center items-center">
-          <Link href="/user/favorite" className="bg-black text-white text-sm py-2 px-4 rounded-md font-semibold">
+          <Link
+            href="/user/favorites"
+            className="bg-black text-white text-sm py-2 px-4 rounded-md font-semibold"
+          >
             My Favorite
           </Link>
-          <Link href="/user/comment" className="bg-red-600 text-white text-sm py-2 px-4 rounded-md font-semibold">
+          <Link
+            href="/user/comment"
+            className="bg-red-600 text-white text-sm py-2 px-4 rounded-md font-semibold"
+          >
             My Comment
           </Link>
         </div>
