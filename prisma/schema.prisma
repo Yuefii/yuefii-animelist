@@ -11,9 +11,11 @@ datasource db {
 }
 
 model Favorite {
-  id         Int    @id @default(autoincrement())
+  id         Int     @id @default(autoincrement())
   mal_id     String
   user_email String
+  title      String
+  image      String?
 
   @@unique([mal_id, user_email])
 }

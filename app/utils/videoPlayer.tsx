@@ -23,10 +23,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeId }) => {
   };
   return (
     <>
-      <div className="flex justify-center sm:justify-start py-2 mx-10">
+      <div className="py-2">
         <button
           onClick={handleWatchTrailerClick}
-          className="bg-red-700 py-2 px-14 text-center rounded-md font-semibold text-white hover:text-black transition-all hover:bg-red-800"
+          className="bg-red-700 py-2 px-14 text-center rounded-md font-semibold text-white hover:text-white transition-all hover:bg-black"
         >
           Watch Trailer
         </button>
